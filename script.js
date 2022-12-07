@@ -3,10 +3,9 @@ const thead = document.getElementById("thead");
 const tbody = document.getElementById("tbody");
 const companyName = document.getElementById("companyName");
 const contactName = document.getElementById("contactName");
-const contactTitleName = document.getElementById("contactTitleName");
+const contactTitle = document.getElementById("contactTitleName");
 const addSupplier = document.getElementById("addSuppl");
 
-const contactTitle = document.getElementById("addSuppl");
 function getUsers() {
     axios.get(url)
     .then(res => {
@@ -44,26 +43,7 @@ function getUsers() {
 
         })
     })
-    companyName.value = ' ';
-    contactName.value = ' ';
-    contactTitleName.value = ' ';
 }
-console.log()
-addSuppl.addEventListener('click', function() {
-    let newCompany = {
-        companyName: companyName.value,
-        contactName: contactName.value,
-        contactTitle: contactTitle.value,
-    };
-    console.log('asdsa');
-    axios.post(url, newCompany)
-        .then(() => {
-            getUsers();
-        });
-    companyName.value = ' ';
-    contactName.value = ' ';
-    contactTitleName.value = ' ';
-})
 
 function removeElement(e) {
     // console.log('click', e.target.parentElement.children[0].innerText)
@@ -77,12 +57,28 @@ function removeElement(e) {
     })
 }
 function updateElement(e) {
-    companyName.value = e.target.parentElement.parentElement.children[0].innerText;
-    contactName.value = e.target.parentElement.parentElement.children[1].innerText;
-    contactTitleName.value = e.target.parentElement.parentElement.children[2].innerText;
+    console.log(e.target.parentElement.children[1])
+    companyName.value = e.target.parentElement.children[1].innerText;
+    contactName.value = e.target.parentElement.children[2].innerText;
+    contactTitle.value = e.target.parentElement.children[3].innerText;
 
-    console.log(companyName, contactName, contactTitle)
-    axios.put(`${url}/${e.target.parentElement.parentElement.id}`);
+    axios.put(`${url}/${e.target.parentElement.parentElement.children[0].children[0].innerText}`);
 }
 getUsers()
 
+addSupplier.addEventListener('click', () => {
+    tbody.innerHTML = ''
+    let newCompany = {
+      companyName: companyName.value,
+      contactName: contactName.value,
+      contactTitle: contactTitle.value,
+    };
+    console.log(newCompany)
+    axios.post(url, newCompany).then(() => {
+      getUsers();
+    });
+  
+    companyName.value = ' ';
+    contactName.value = ' ';
+    contactTitle.value = ' ';
+  });
