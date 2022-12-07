@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #FF3CAC;
+            background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+        }
+        .container {
+            width: 50%;
+        }
+        .container input {
+            width: 100%;
+        }
+        table {
+            color: black;
+        }
+        #image {
+            display: none;
+            position: fixed;
+            left: 40%;
+            top: 30%;
+            /* width: 100%;
+            height: 100vh; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div><input type="text" placeholder="Company Name" id="companyName"></div>
+        <div><input type="text" placeholder="Contact Name" id="contactName"></div>
+        <div><input type="text" placeholder="Contact TItle" id="contactTitleName"></div>
+        <div><button id="addSuppl">Add Supplier</button></div>
+    </div>
+    <div>
+        <table id="table">
+            <thead id="thead">
+                <tr>
+                    <th>ID</th>
+                    <th>Company Name</th>
+                    <th>Contact Name</th>
+                    <th>Contact Title</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                
+            </tbody>
+        </table>
+    </div>
+    <img src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" id="image" alt="">
+</body>
+<script src="script.js"></script>
+</html>
